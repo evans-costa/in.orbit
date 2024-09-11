@@ -7,4 +7,8 @@ export const client = new Client({
   connectionString: env.DATABASE_URL,
 });
 
+(async () => {
+  await client.connect();
+})();
+
 export const db = drizzle(client, { schema, logger: true });

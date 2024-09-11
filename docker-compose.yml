@@ -1,11 +1,16 @@
-name: in.orbit-backend
-
+name: inorbit-backend
 services:
   db:
+    container_name: "db-inorbit"
     image: bitnami/postgresql:13.16.0
-    ports:
-     - '5432:5432'
     environment:
       - POSTGRES_USER=docker
       - POSTGRES_PASSWORD=docker
       - POSTGRES_DB=inorbit
+    ports:
+     - '5432:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      
+volumes:
+  pgdata:
